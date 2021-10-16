@@ -10,6 +10,8 @@
   - Date: October 13, 2021
   - Description: Build an app ask user for input then generates amounts each person should pay.
 
+---
+
 - **[Treasure Island](TreasureIsland/)**
   - Date: October 14, 2021
   - Description: Build an game with different logic for each question.
