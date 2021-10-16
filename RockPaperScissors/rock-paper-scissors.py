@@ -1,52 +1,60 @@
 import random
-
 # Rock
-rpcimage = ["""
+rock = """
     _______
 ---'   ____)
       (_____)
       (_____)
       (____)
 ---.__(___)
-""",
-            """
+"""
+
+# Paper
+paper = """
      _______
 ---'    ____)____
            ______)
           _______)
          _______)
 ---.__________)
-""",
-            """
+"""
+
+# Scissors
+scissors = """
     _______
 ---'   ____)____
           ______)
        __________)
       (____)
 ---.__(___)
-"""]
+"""
 
 print('Welcome to Rock, Paper, Scissors.')
 
 rpc = ["Rock", "Paper", "Scissors"]
+rpc_image = [rock, paper, scissors]
 user_choice = int(input(
     "What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors \n"))
-cpu_choice = random.choice(rpc)
-cpu_image_index = cpu_choice.index(cpu_choice)
+cpu_choice = random.randint(0, len(rpc)-1)
 
 
-if rpc[user_choice] == "Rock" and cpu_choice == "Scissors":
-    print(rpc[user_choice], cpu_choice)
+if user_choice == 0 and cpu_choice == 2:
+    print(rpc_image[user_choice])
+    print("The Computer Chose: \n", rpc_image[cpu_choice])
     print(f"You choose: {rpc[user_choice]}. You win!")
-elif rpc[user_choice] == "Scissors" and cpu_choice == "Paper":
-    print(rpc[user_choice], cpu_choice)
+elif user_choice == 2 and cpu_choice == 1:
+    print(rpc_image[user_choice])
+    print("The Computer Chose: \n", rpc_image[cpu_choice])
     print(f"You choose: {rpc[user_choice]}. You win!")
-elif rpc[user_choice] == "Paper" and cpu_choice == "Rock":
-    print(rpc[user_choice], cpu_choice)
+elif user_choice == 1 and cpu_choice == 0:
+    print(rpc_image[user_choice])
+    print("The Computer Chose: \n", rpc_image[cpu_choice])
     print(f"You choose: {rpc[user_choice]}. You win!")
-elif rpc[user_choice] == cpu_choice:
-    print(rpc[user_choice], cpu_choice)
+elif user_choice == cpu_choice:
+    print(rpc_image[user_choice])
+    print("The Computer Chose: \n", rpc_image[cpu_choice])
     print("Its a tie")
 else:
-    print(rpc[user_choice], cpu_choice)
+    print(rpc_image[user_choice])
+    print("The Computer Chose: \n", rpc_image[cpu_choice])
     print("You lost!")
