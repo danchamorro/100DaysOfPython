@@ -15,3 +15,9 @@
 - **[Treasure Island](TreasureIsland/)**
   - Date: October 14, 2021
   - Description: Build an game with different logic for each question.
+
+---
+
+- **[Password Generator](/PasswordGenerator/)**
+  - Date: October 14, 2021
+  - Description: Build an game with different logic for each question.
