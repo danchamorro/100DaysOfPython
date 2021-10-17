@@ -19,5 +19,5 @@
 ---
 
 - **[Password Generator](/PasswordGenerator/)**
-  - Date: October 14, 2021
+  - Date: October 15, 2021
   - Description: Build an game with different logic for each question.
