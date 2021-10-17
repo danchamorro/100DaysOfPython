@@ -21,5 +21,6 @@ rand_letters = random.choices(letters, k=nr_letters)
 rand_symbols = random.choices(symbols, k=nr_symbols)
 rand_numbers = random.choices(numbers, k=nr_numbers)
 pass_list = rand_letters + rand_numbers + rand_symbols
+random.shuffle(pass_list)
 password = "".join(pass_list)
 print("Here is your password: ", password)
