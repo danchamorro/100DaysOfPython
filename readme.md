@@ -21,3 +21,9 @@
 - **[Password Generator](/PasswordGenerator/)**
   - Date: October 15, 2021
   - Description: Build an game with different logic for each question.
+
+---
+
+- **[Hangman](/Hangman/)**
+  - Date: October 16, 2021
+  - Description: Build Hangman game with ASCII art.
