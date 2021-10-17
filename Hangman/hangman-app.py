@@ -1,13 +1,71 @@
 import random
 
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
 
 word_list = ["aardvark", "baboon", "camel"]
 
-
 chosen_word = random.choice(word_list)
 
-# Testing code
-print(f'Pssst, the solution is {chosen_word}.')
+# Number of player live's.
+lives = 6
+
+print(stages[-1])
 
 display = []
 
@@ -16,25 +74,22 @@ for letter in chosen_word:
 
 print(display)
 
-while "_" in display:  # if the the display still has bank lines continue
+while lives > 0:  # Check for number of lives
     guess = input("Choose a letter: ").lower()
-    if guess not in chosen_word:  # Break out if letter not present in chosen_word
-        print("You lost for now.")
-        break
-
-    # for letter in chosen_word:
-    #     if letter == guess:
-    #         display[chosen_word.index(letter)] = letter
-    #         print(letter, "Right")
-    #     else:
-    #         print(letter, "Wrong")
-
-    # Matching the index of the letter in the word to the index of the display
+    if guess not in chosen_word:  # reduce lives in guess not on chosen_word
+        lives -= 1
+        print(stages[lives])
+    if lives == 0:
+        print("You have no more lives try again")
+    # If index of letter in word matches the index of display replace display index with letter
     for index, elem in enumerate(chosen_word):
         if elem == guess:
             display[index] = guess
-            print(f"{guess} is found at index {index}")
     print(display)
+    # When "_" is no longer present in display than you win.
+    if "_" not in display:
+        lives = 0
+        print(" Yay you win!")
+        break
 
-print(display)
-print(chosen_word)
+print("The answer was: ", chosen_word)
