@@ -18,6 +18,9 @@ print(display)
 
 while "_" in display:  # if the the display still has bank lines continue
     guess = input("Choose a letter: ").lower()
+    if guess not in chosen_word:  # Break out if letter not present in chosen_word
+        print("You lost for now.")
+        break
 
     # for letter in chosen_word:
     #     if letter == guess:
