@@ -5,9 +5,13 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-# TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+# // TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
-# TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
+# // TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
+""" 
+TODO-3: Check if the user wanted to encrypt or decrypt the message by checking the 'direction' variable. Then call the correct 
+TODO-Cont function based on that 'direction' variable. You should be able to test the code to encrypt *AND* decrypt a message. 
+"""
 # e.g.
 #plain_text = "hello"
 #shift = 5
