@@ -27,3 +27,9 @@
 - **[Hangman](/Hangman/)**
   - Date: October 16, 2021
   - Description: Build Hangman game with ASCII art.
+
+---
+
+- **[Caesar Cipher](/CaesarCipher/)**
+  - Date: October 18, 2021
+  - Description: Encode and Decode any word
