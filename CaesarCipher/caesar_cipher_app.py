@@ -24,6 +24,7 @@ def encrypt(inp_text, inp_shift):
     cipher_text = ""
     for letter in inp_text:
         index = alphabet.index(letter)
+        # This will prevent index out of range durring the shift. Instead the list will get extended by the inp_shift number
         if index > len(alphabet) or index < len(alphabet):
             alphabet.extend(alphabet * index)
         cipher_letter = alphabet[index + inp_shift]
