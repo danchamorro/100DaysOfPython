@@ -24,12 +24,14 @@ def encrypt(inp_text, inp_shift):
     cipher_text = ""
     for letter in inp_text:
         index = alphabet.index(letter)
+        if index > len(alphabet) or index < len(alphabet):
+            alphabet.extend(alphabet * index)
         cipher_letter = alphabet[index + inp_shift]
         cipher_text = cipher_text + cipher_letter
         print("Original Index", index)
         print("Altered Index", index + inp_shift)
         print(cipher_letter)
-    print(cipher_text)
+    print(f"The encoded text is {cipher_text}.")
 
 
 encrypt(inp_text=text, inp_shift=shift)
