@@ -33,3 +33,9 @@
 - **[Caesar Cipher](/CaesarCipher/)**
   - Date: October 18, 2021
   - Description: Encode and Decode any word
+
+---
+
+- **[Secret Auction](/SecretAuction/)**
+  - Date: October 19, 2021
+  - Description: Users types in their bids, then app will calculate who is teh highest bidder.
