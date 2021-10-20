@@ -28,7 +28,7 @@ def auction_game():
 
     while other_bidders:
         name = input("What is your name? ")
-        bid = int(input("What is your bid? "))
+        bid = int(input("What is your bid? $ "))
 
         new_bids = {
             "name": name,
