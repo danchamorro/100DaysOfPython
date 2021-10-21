@@ -1,6 +1,9 @@
+from art import logo
 # Calculator
 
 # Add
+
+
 def add(n1, n2):
     return n1 + n2
 
@@ -26,6 +29,8 @@ operations = {
     "*": multiply,
     "/": divide,
 }
+
+print(logo)
 
 
 def calculator():
