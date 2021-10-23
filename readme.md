@@ -48,6 +48,6 @@
 
 ---
 
-- **[Calculator](/Blackjack/)**
+- **[Blackjack](/Blackjack/)**
   - Date: October 22, 2021
   - Description: Play popular a game of Blackjack.
