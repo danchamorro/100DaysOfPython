@@ -9,7 +9,7 @@ from art import logo
 # The Jack/Queen/King all count as 10.
 # The the Ace can count as 11 or 1.
 # Use the following list as the deck of cards:
-## cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 # The cards in the list have equal probability of being drawn.
 # Cards are not removed from the deck as they are drawn.
 # The computer is the dealer.
@@ -23,11 +23,17 @@ cpu_cards = []
 
 
 def random_card():
+    """[summary]
+    Returns a single random card
+    """
     rand_card = random.choice(cards)
     player_cards.append(rand_card)
 
 
 def deal_player_card():
+    """[summary]
+    Returns 2 random cards for the player
+    """
     card1 = random.choice(cards)
     card2 = random.choice(cards)
     player_cards.append(card1)
@@ -35,6 +41,9 @@ def deal_player_card():
 
 
 def deal_cpu_card():
+    """[summary]
+    Returns a 2 random cards for the computer
+    """
     card1 = random.choice(cards)
     card2 = random.choice(cards)
     cpu_cards.append(card1)
