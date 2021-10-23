@@ -1,5 +1,6 @@
 # Blackjack
 import random
+from art import logo
 
 ############### Our Blackjack House Rules #####################
 
@@ -40,22 +41,45 @@ def deal_cpu_card():
     cpu_cards.append(card2)
 
 
-deal_player_card()
-print("Your cards: {}".format(player_cards))
-deal_cpu_card()
-print("Computer's first card: {}".format(cpu_cards[0]))
+print(logo)
 
-new_card = input("Type 'y' for another card, type 'n' to pass: ")
 
-if new_card == "n":
-    print(player_cards)
-else:
-    random_card()
-    print(player_cards)
+def blackjack():
+    contin = True
+    print("==================================")
+    while contin:
+        deal_player_card()
+        print("Your cards:", player_cards)
+        deal_cpu_card()
+        print("Computer's first card:", cpu_cards[0])
 
-print(cpu_cards)
+        new_card = input("Type 'y' for another card, type 'n' to pass: ")
 
-if sum(player_cards) <= 21 and sum(player_cards) > sum(cpu_cards):
-    print("You win!")
-else:
-    print("Dealer wins!")
+        if new_card == "n":
+            print(player_cards)
+        elif new_card == "y":
+            random_card()
+            print(player_cards)
+
+        print("Your final hand:", player_cards)
+        print("Computers final hand:", cpu_cards)
+
+        if sum(player_cards) <= 21 and sum(player_cards) > sum(cpu_cards):
+            print("You win!")
+        else:
+            print("Dealer wins!")
+
+        new_game = input(
+            "Do you want to play again? Type 'y' for yes and 'n' for no: ")
+
+        if new_game == "n":
+            contin = False
+            break
+        elif new_game == "y":
+            player_cards.clear()
+            cpu_cards.clear()
+            blackjack()
+    print("==================================")
+
+
+blackjack()
