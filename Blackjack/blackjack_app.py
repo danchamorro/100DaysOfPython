@@ -45,6 +45,9 @@ print(logo)
 
 
 def blackjack():
+    """[summary]
+    Blackjack game. 
+    """
     contin = True
     print("==================================")
     while contin:
