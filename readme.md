@@ -38,10 +38,16 @@
 
 - **[Secret Auction](/SecretAuction/)**
   - Date: October 19, 2021
-  - Description: Users types in their bids, then app will calculate who is teh highest bidder.
+  - Description: Users types in their bids, then app will calculate who is the highest bidder.
 
 ---
 
-- **[Calculator](Calculator/)**
+- **[Calculator](/Calculator/)**
   - Date: October 19, 2021
   - Description: Do basic math functions with the ability to chain math functions on the previous result.
+
+---
+
+- **[Calculator](/Blackjack/)**
+  - Date: October 22, 2021
+  - Description: Play popular a game of Blackjack.
