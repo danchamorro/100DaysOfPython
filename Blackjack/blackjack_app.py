@@ -87,12 +87,14 @@ def blackjack():
         new_game = input(
             "Do you want to play again? Type 'y' for yes and 'n' for no: ")
 
-        if new_game == "n":
-            contin = False
-        elif new_game == "y":
+        if new_game == "y":
             player_cards.clear()
             cpu_cards.clear()
-            blackjack()
+            continue
+        elif new_game == "n":
+            contin = False
+            break
+
     print("==================================")
 
 
