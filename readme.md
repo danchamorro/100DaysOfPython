@@ -51,3 +51,9 @@
 - **[Blackjack](/Blackjack/)**
   - Date: October 22, 2021
   - Description: Play popular a game of Blackjack.
+
+---
+
+- **[Guessing Game](/GuessingGame/)**
+  - Date: October 23, 2021
+  - Description: Guess a number between 1 and 100 and see if you got right.
