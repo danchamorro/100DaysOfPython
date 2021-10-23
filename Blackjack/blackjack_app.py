@@ -72,6 +72,9 @@ def blackjack():
         elif new_card == "y":
             random_card()
             print(player_cards)
+        if sum(player_cards) > 21 and 11 in player_cards:  # Account for the Ace being 11 or 1
+            player_cards.remove(11)
+            player_cards.append(1)
 
         print("Your final hand:", player_cards)
         print("Computers final hand:", cpu_cards)
@@ -86,7 +89,6 @@ def blackjack():
 
         if new_game == "n":
             contin = False
-            break
         elif new_game == "y":
             player_cards.clear()
             cpu_cards.clear()
