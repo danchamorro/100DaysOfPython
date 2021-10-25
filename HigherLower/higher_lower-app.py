@@ -46,10 +46,10 @@ def high_low():
         rand_a = rand_select()
         rand_b = rand_select()
         print(
-            f"Compare A: {rand_a['name']}, a {rand_a['description']}, from {rand_a['country']}. FOLLOWERS {rand_a['follower_count']}")
+            f"Compare A: {rand_a['name']}, a {rand_a['description']}, from {rand_a['country']}.")
         print(vs)
         print(
-            f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.FOLLOWERS {rand_b['follower_count']}")
+            f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.")
         # User guess
         user_guess = input("Who has more followers? Type 'A' or 'B': ").lower()
         clearConsole()
