@@ -8,6 +8,14 @@
 import random
 from game_data import data
 from art import logo, vs
+import os
+
+
+def clearConsole():  # Clear the console so the next bidder doesn't see the previous bit.
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
 
 # for name in data:
 #     print(name["name"])
@@ -26,8 +34,6 @@ def rand_select():
 
 score = 0
 
-print(logo)
-
 
 def high_low():
     """
@@ -36,6 +42,7 @@ def high_low():
     score = 0
     correct = True
     while correct:
+        print(logo)
         rand_a = rand_select()
         rand_b = rand_select()
         print(
@@ -45,6 +52,7 @@ def high_low():
             f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.FOLLOWERS {rand_b['follower_count']}")
         # User guess
         user_guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+        clearConsole()
 
         if user_guess == "a":
             if rand_a["follower_count"] > rand_b["follower_count"]:
