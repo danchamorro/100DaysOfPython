@@ -57,3 +57,9 @@
 - **[Guessing Game](/GuessingGame/)**
   - Date: October 23, 2021
   - Description: Guess a number between 1 and 100 and see if you got right.
+
+---
+
+- **[Higher Lower](/HigherLower/)**
+  - Date: October 24, 2021
+  - Description: Guess which entity or person has more followers.
