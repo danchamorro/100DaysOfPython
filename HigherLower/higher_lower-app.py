@@ -12,21 +12,42 @@ from game_data import data
 #     print(name["name"])
 
 
-# User guess
-# user_guess = input("Who has more followers? Type 'A' or 'B': ")
-
 # Get random element
 def rand_select():
     influencer = random.choice(data)
     return influencer
 
 
-contin = True
+score = 0
 
-# while contin:
-rand_a = rand_select()
-rand_b = rand_select()
-print(
-    f"Compare A: {rand_a['name']}, a {rand_a['description']}, from {rand_a['country']}.")
-print(
-    f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.")
+
+def high_low():
+    score = 0
+    correct = True
+    while correct:
+        rand_a = rand_select()
+        rand_b = rand_select()
+        print(
+            f"Compare A: {rand_a['name']}, a {rand_a['description']}, from {rand_a['country']}. FOLLOWERS {rand_a['follower_count']}")
+        print(
+            f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.FOLLOWERS {rand_b['follower_count']}")
+        # User guess
+        user_guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+
+        if user_guess == "a":
+            if rand_a["follower_count"] > rand_b["follower_count"]:
+                score += 1
+                continue
+            else:
+                print(f"That was wrong. Your final score was: {score}")
+                break
+        elif user_guess == "b":
+            if rand_b["follower_count"] > rand_a["follower_count"]:
+                score += 1
+                continue
+            else:
+                print(f"That was wrong. Your final score was: {score}")
+                break
+
+
+high_low()
