@@ -1,12 +1,13 @@
 """
 //TODO1: Choose two random element from list of dictionaries in game_data.py
-TODO2: Compare both elements based on how many followers they have. 
-TODO3: User will guess who they think have the most followers. If correct the move on to a new random set of choices or loose.  
-TODO4: Implement game art. 
+//TODO2: Compare both elements based on how many followers they have. 
+//TODO3: User will guess who they think have the most followers. If correct the move on to a new random set of choices or loose.  
+//TODO4: Implement game art. 
 """
 
 import random
 from game_data import data
+from art import logo, vs
 
 # for name in data:
 #     print(name["name"])
@@ -14,14 +15,24 @@ from game_data import data
 
 # Get random element
 def rand_select():
+    """Randomly select a person or entity from the game data list
+
+    Returns:
+        Dictionary
+    """
     influencer = random.choice(data)
     return influencer
 
 
 score = 0
 
+print(logo)
+
 
 def high_low():
+    """
+    Choose a entity or person you think has more followers
+    """
     score = 0
     correct = True
     while correct:
@@ -29,6 +40,7 @@ def high_low():
         rand_b = rand_select()
         print(
             f"Compare A: {rand_a['name']}, a {rand_a['description']}, from {rand_a['country']}. FOLLOWERS {rand_a['follower_count']}")
+        print(vs)
         print(
             f"Compare B: {rand_b['name']}, a {rand_b['description']}, from {rand_b['country']}.FOLLOWERS {rand_b['follower_count']}")
         # User guess
