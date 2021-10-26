@@ -47,6 +47,9 @@ COINS = {
 # TODO6: Make the coffee and deduct the resources.
 
 
+cont = True
+
+
 # Show prices of each coffee.
 def cost():
     """Show prices of each coffee"""
@@ -57,33 +60,35 @@ def cost():
 # Prompt user by asking "What would you like? (espresso/latte/cappuccino):"
 user_choice = input(
     "What would you like? (espresso/latte/cappuccino): ").lower()
-
+if user_choice == "report":
+    pass
 
 # Turn off the Coffee Machine by entering “off” to the prompt.
-
+if user_choice == "off":
+    pass
 
 # Print report.
+
+
 def report():
     """Generate report of remaining resources"""
     for k, v in resources.items():
         print("{}: {}ml".format(k.title(), v))
 
-# Check resources sufficient?
-
-
 # Check transaction successful?
-
 
 # Make Coffee.
 
 
-# Machines bank
+# Machines bank.
 machine_bank = 0
 
-# User coins
+# User coins.
 user_coins = 0.0
 
+
 # Ask how many of each coin.
+#! This is working
 quarter = float(input("How many quarters?: "))
 dime = float(input("How many dimes?: "))
 nickle = float(input("How many nickles?: "))
@@ -91,6 +96,7 @@ penny = float(input("How many pennies?: "))
 
 
 # Get money from user.
+#! This is working
 def user_money(quarter=0, dime=0, nickle=0, penny=0):
     """Calculate the total amount of coins by user"""
     global user_coins
@@ -103,7 +109,7 @@ def user_money(quarter=0, dime=0, nickle=0, penny=0):
     return user_coins
 
 
-# Machines money
+# Machines money.
 def machine_money():
     global machine_bank
     machine_bank += user_money()
@@ -116,22 +122,47 @@ print(user_coins)
 machine_money()
 print(machine_bank)
 
+
+# Check resources sufficient.
+def check_resources(coffee):
+    """Check if machine has enough resources for coffee"""
+    coffee = MENU[coffee]["ingredients"]
+    if coffee["water"] > resources["water"] and resources["water"] <= 0:
+        print("Not enough water")
+        if coffee["milk"] > resources["milk"] and resources["milk"] <= 0:
+            print("Not enough milk")
+            if coffee["coffee"] > resources["coffee"] and resources["coffee"] <= 0:
+                print("Not enough coffee")
+
+
+# check_cost(user_choice)
+
+check_resources(user_choice)
+
 # Compare if user coins can make a purchase
-if user_choice == "latte":
-    if user_money() >= MENU["latte"]["cost"]:
-        print("Here is your latte")
-        if user_money() > MENU["latte"]["cost"]:
-            change = user_money() - MENU["latte"]["cost"]
-            print("Here is ${} in change.".format(change))
-elif user_choice == "espresso":
-    if user_money() >= MENU["espresso"]["cost"]:
-        print("Here is your espresso")
-        if user_money() > MENU["espresso"]["cost"]:
-            change = user_money() - MENU["espresso"]["cost"]
-            print("Here is ${} in change.".format(change))
-elif user_choice == "cappuccino":
-    if user_money() >= MENU["cappuccino"]["cost"]:
-        print("Here is your cappuccino")
-        if user_money() > MENU["cappuccino"]["cost"]:
-            change = user_money() - MENU["cappuccino"]["cost"]
-            print("Here is ${} in change.".format(change))
+
+
+# def check_cost(user_choice):
+#     coffee = MENU["latte"]["ingredients"]
+#     if user_choice == "latte":
+#         if user_money() >= MENU["latte"]["cost"]:
+#             print("Here is your latte")
+#             if user_money() > MENU["latte"]["cost"]:
+#                 change = user_money() - MENU["latte"]["cost"]
+#                 print("Here is ${} in change.".format(change))
+#     elif user_choice == "espresso":
+#         if user_money() >= MENU["espresso"]["cost"]:
+#             print("Here is your espresso")
+#             if user_money() > MENU["espresso"]["cost"]:
+#                 change = user_money() - MENU["espresso"]["cost"]
+#                 print("Here is ${} in change.".format(change))
+#     elif user_choice == "cappuccino":
+#         if user_money() >= MENU["cappuccino"]["cost"]:
+#             print("Here is your cappuccino")
+#             if user_money() > MENU["cappuccino"]["cost"]:
+#                 change = user_money() - MENU["cappuccino"]["cost"]
+#                 print("Here is ${} in change.".format(change))
+
+#     resources["water"] = resources["water"] - coffee["water"]
+#     resources["milk"] = resources["milk"] - coffee["milk"]
+#     resources["coffee"] = resources["coffee"] - coffee["coffee"]
