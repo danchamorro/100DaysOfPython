@@ -46,9 +46,8 @@ COINS = {
 # TODO5: Machine take coins as a payment. Check if coins provided are enough for the coffee.
 # TODO6: Make the coffee and deduct the resources.
 
+
 # Show prices of each coffee.
-
-
 def cost():
     """Show prices of each coffee"""
     for k, v in MENU.items():
@@ -56,7 +55,8 @@ def cost():
 
 
 # Prompt user by asking "What would you like? (espresso/latte/cappuccino):"
-choice = input("What would you like? (espresso/latte/cappuccino): ")
+user_choice = input(
+    "What would you like? (espresso/latte/cappuccino): ").lower()
 
 
 # Turn off the Coffee Machine by entering “off” to the prompt.
@@ -64,6 +64,7 @@ choice = input("What would you like? (espresso/latte/cappuccino): ")
 
 # Print report.
 def report():
+    """Generate report of remaining resources"""
     for k, v in resources.items():
         print("{}: {}ml".format(k.title(), v))
 
@@ -88,10 +89,10 @@ dime = float(input("How many dimes?: "))
 nickle = float(input("How many nickles?: "))
 penny = float(input("How many pennies?: "))
 
+
 # Get money from user.
-
-
 def user_money(quarter=0, dime=0, nickle=0, penny=0):
+    """Calculate the total amount of coins by user"""
     global user_coins
     q = COINS["quarter"] * quarter
     d = COINS["dime"] * dime
@@ -99,8 +100,38 @@ def user_money(quarter=0, dime=0, nickle=0, penny=0):
     p = COINS["penny"] * penny
     for coin in q, d, n, p:
         user_coins += coin
+    return user_coins
+
+
+# Machines money
+def machine_money():
+    global machine_bank
+    machine_bank += user_money()
 
 
 user_money(quarter, dime, nickle, penny)
 
 print(user_coins)
+
+machine_money()
+print(machine_bank)
+
+# Compare if user coins can make a purchase
+if user_choice == "latte":
+    if user_money() >= MENU["latte"]["cost"]:
+        print("Here is your latte")
+        if user_money() > MENU["latte"]["cost"]:
+            change = user_money() - MENU["latte"]["cost"]
+            print("Here is ${} in change.".format(change))
+elif user_choice == "espresso":
+    if user_money() >= MENU["espresso"]["cost"]:
+        print("Here is your espresso")
+        if user_money() > MENU["espresso"]["cost"]:
+            change = user_money() - MENU["espresso"]["cost"]
+            print("Here is ${} in change.".format(change))
+elif user_choice == "cappuccino":
+    if user_money() >= MENU["cappuccino"]["cost"]:
+        print("Here is your cappuccino")
+        if user_money() > MENU["cappuccino"]["cost"]:
+            change = user_money() - MENU["cappuccino"]["cost"]
+            print("Here is ${} in change.".format(change))
