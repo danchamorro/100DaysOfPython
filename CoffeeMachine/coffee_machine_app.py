@@ -30,6 +30,15 @@ resources = {
     "coffee": 100,
 }
 
+# Process coins.
+COINS = {
+    "quarter": 0.25,
+    "dime": 0.10,
+    "nickle": 0.05,
+    "penny": 0.01,
+}
+
+
 # TODO1: Machine makes 3 flavors
 # TODO2: Machine is coin operated
 # TODO3: Print a report that shows how many resources are left in the machine.
@@ -61,15 +70,37 @@ def report():
 # Check resources sufficient?
 
 
-# Process coins.
-coins = {
-    "quarter": 0.25,
-    "dime": 0.10,
-    "nickle": 0.05,
-    "penny": 0.01,
-}
-
 # Check transaction successful?
 
 
 # Make Coffee.
+
+
+# Machines bank
+machine_bank = 0
+
+# User coins
+user_coins = 0.0
+
+# Ask how many of each coin.
+quarter = float(input("How many quarters?: "))
+dime = float(input("How many dimes?: "))
+nickle = float(input("How many nickles?: "))
+penny = float(input("How many pennies?: "))
+
+# Get money from user.
+
+
+def user_money(quarter=0, dime=0, nickle=0, penny=0):
+    global user_coins
+    q = COINS["quarter"] * quarter
+    d = COINS["dime"] * dime
+    n = COINS["nickle"] * nickle
+    p = COINS["penny"] * penny
+    for coin in q, d, n, p:
+        user_coins += coin
+
+
+user_money(quarter, dime, nickle, penny)
+
+print(user_coins)
