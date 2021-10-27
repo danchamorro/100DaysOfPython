@@ -39,14 +39,6 @@ COINS = {
 }
 
 
-# TODO1: Machine makes 3 flavors
-# TODO2: Machine is coin operated
-# TODO3: Print a report that shows how many resources are left in the machine.
-# TODO4: Check if the resources are sufficient enough to make the coffee.
-# TODO5: Machine take coins as a payment. Check if coins provided are enough for the coffee.
-# TODO6: Make the coffee and deduct the resources.
-
-
 def main():
     cont = True
     while cont:
