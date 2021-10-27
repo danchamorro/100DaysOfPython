@@ -77,18 +77,9 @@ def report():
 
 # Check transaction successful?
 
-# Make Coffee.
-
-
-# Machines bank.
-machine_bank = 0
-
-# User coins.
-user_coins = 0.0
-
 
 # Ask how many of each coin.
-#! This is working
+#! This is working.
 quarter = float(input("How many quarters?: "))
 dime = float(input("How many dimes?: "))
 nickle = float(input("How many nickles?: "))
@@ -96,50 +87,103 @@ penny = float(input("How many pennies?: "))
 
 
 # Get money from user.
-#! This is working
+#! This is working.
 def user_money(quarter=0, dime=0, nickle=0, penny=0):
     """Calculate the total amount of coins by user"""
-    global user_coins
-    q = COINS["quarter"] * quarter
-    d = COINS["dime"] * dime
-    n = COINS["nickle"] * nickle
-    p = COINS["penny"] * penny
-    for coin in q, d, n, p:
+    user_coins = 0
+    quarter = COINS["quarter"] * quarter
+    dime = COINS["dime"] * dime
+    nickle = COINS["nickle"] * nickle
+    penny = COINS["penny"] * penny
+    for coin in quarter, dime, nickle, penny:
         user_coins += coin
-    return user_coins
+    return round(user_coins, 2)
+
+
+print(report())
+
+
+# Check resources.
+def check_resources(user_choice):
+    """Check if machine has enough resources for coffee"""
+    user_choice = MENU[user_choice]["ingredients"]
+    if resources["water"] >= user_choice["water"]:
+        return True
+    elif resources["milk"] >= user_choice["milk"]:
+        return True
+    elif resources["coffee"] >= user_choice["coffee"]:
+        return True
+    else:
+        return False
+
+
+# Make Coffee.
+def make_coffee(user_choice):
+    """Make the coffee"""
+    coffee = MENU[user_choice]["ingredients"]
+    if user_choice == "latte":
+        resources["water"] = resources["water"] - coffee["water"]
+        resources["milk"] = resources["milk"] - coffee["milk"]
+        resources["coffee"] = resources["coffee"] - coffee["coffee"]
+    elif user_choice == "cappuccino":
+        resources["water"] = resources["water"] - coffee["water"]
+        resources["milk"] = resources["milk"] - coffee["milk"]
+        resources["coffee"] = resources["coffee"] - coffee["coffee"]
+    elif user_choice == "espresso":
+        resources["water"] = resources["water"] - coffee["water"]
+        resources["coffee"] = resources["coffee"] - coffee["coffee"]
+
+
+# Refund money.
+def refund(change):
+    change = user_money(quarter, dime, nickle, penny) - \
+        MENU[user_choice]["cost"]
+    return round(change, 2)
+
+
+if user_choice == "latte" and user_money(quarter, dime, nickle, penny) >= MENU[user_choice]["cost"] and check_resources(user_choice):
+    make_coffee(user_choice)
+    print("Enjoy your: {}".format(user_choice))
+    if user_money(quarter, dime, nickle, penny) > MENU[user_choice]["cost"]:
+        print("You have a refund of: ${}".format(refund(user_money)))
+elif user_choice == "cappuccino" and user_money(quarter, dime, nickle, penny) >= MENU[user_choice]["cost"] and check_resources(user_choice):
+    make_coffee(user_choice)
+    print("Enjoy your: {}".format(user_choice))
+    if user_money(quarter, dime, nickle, penny) > MENU[user_choice]["cost"]:
+        print("You have a refund of: ${}".format(refund(user_money)))
+elif user_choice == "espresso" and user_money(quarter, dime, nickle, penny) >= MENU[user_choice]["cost"] and check_resources(user_choice):
+    make_coffee(user_choice)
+    print("Enjoy your: {}".format(user_choice))
+    if user_money(quarter, dime, nickle, penny) > MENU[user_choice]["cost"]:
+        print("You have a refund of: ${}".format(refund(user_money)))
+else:
+    print("Not enough money")
+
+print("After coffee made. ")
+print(report())
 
 
 # Machines money.
-def machine_money():
-    global machine_bank
-    machine_bank += user_money()
+#! This is working.
+def machine_money(machine_bank):
+    """Returns the amount of money the machine has collected"""
+    machine_bank = user_money(quarter, dime, nickle, penny)
+    return round(machine_bank, 2)
 
 
-user_money(quarter, dime, nickle, penny)
-
-print(user_coins)
-
-machine_money()
-print(machine_bank)
+print("From User Money: ", user_money(quarter, dime, nickle, penny))
 
 
-# Check resources sufficient.
-def check_resources(coffee):
-    """Check if machine has enough resources for coffee"""
-    coffee = MENU[coffee]["ingredients"]
-    if coffee["water"] > resources["water"] and resources["water"] <= 0:
-        print("Not enough water")
-        if coffee["milk"] > resources["milk"] and resources["milk"] <= 0:
-            print("Not enough milk")
-            if coffee["coffee"] > resources["coffee"] and resources["coffee"] <= 0:
-                print("Not enough coffee")
+print("From Machine money: ", machine_money(user_money))
 
-
-# check_cost(user_choice)
-
-check_resources(user_choice)
 
 # Compare if user coins can make a purchase
+def check_cost(user_choice, resources):
+    resources = check_resources(False)
+    if resources == True:
+        if user_choice == "latte":
+            if user_money() >= MENU["latte"]["cost"]:
+                print("Here is your latte")
 
 
 # def check_cost(user_choice):
