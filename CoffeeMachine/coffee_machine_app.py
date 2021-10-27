@@ -47,46 +47,51 @@ COINS = {
 # TODO6: Make the coffee and deduct the resources.
 
 
-cont = True
-
-
 def main():
+    cont = True
     while cont:
-        # Show prices of each coffee.
-        def cost():
-            """Show prices of each coffee"""
-            for k, v in MENU.items():
-                print("{}, cost: ${}".format(k.title(), v["cost"]))
-
-        # Prompt user by asking "What would you like? (espresso/latte/cappuccino):"
-        user_choice = input(
-            "What would you like? (espresso/latte/cappuccino): ").lower()
-        if user_choice == "report":
-            pass
-
-        print("Please insert coins.")
-
-        # Turn off the Coffee Machine by entering “off” to the prompt.
-        if user_choice == "off":
-            pass
-
         # Print report.
-
         def report():
             """Generate report of remaining resources"""
             for k, v in resources.items():
                 print("{}: {}ml".format(k.title(), v))
 
+        # Turn off machine ie: exit program.
+        def turn_off():
+            """Exit the program"""
+            cont = False
+            return cont
+
+        # Prompt user by asking "What would you like? (espresso/latte/cappuccino):"
+        user_choice = ""
+        while user_choice not in MENU.keys():
+            user_choice = input(
+                "What would you like? (espresso/latte/cappuccino): ").lower()
+        # Show a report of current resources.
+            if user_choice == "report":
+                print(report())
+        # Turn off the Coffee Machine by entering “off” to the prompt.
+            if user_choice == "off":
+                return turn_off()
+
+        print("Please insert coins.")
+
         # Ask how many of each coin.
         #! This is working.
-        quarter = float(input("How many quarters?: "))
-        dime = float(input("How many dimes?: "))
-        nickle = float(input("How many nickles?: "))
-        penny = float(input("How many pennies?: "))
+        while True:
+            try:
+                quarter = float(input("How many quarters?: "))
+                dime = float(input("How many dimes?: "))
+                nickle = float(input("How many nickles?: "))
+                penny = float(input("How many pennies?: "))
+            except ValueError:
+                print("Sorry, I didn't understand that. Please type a number.")
+                continue
+            else:
+                break
 
         # Get money from user.
         #! This is working.
-
         def user_money(quarter=0, dime=0, nickle=0, penny=0):
             """Calculate the total amount of coins by user"""
             user_coins = 0
@@ -100,7 +105,6 @@ def main():
 
         # Check resources.
         #! This is working.
-
         def check_resources(user_choice):
             """Check if machine has enough resources for coffee"""
             user_choice = MENU[user_choice]["ingredients"]
@@ -115,7 +119,6 @@ def main():
 
         # Make Coffee.
         #! This is working.
-
         def make_coffee(user_choice):
             """Make the coffee"""
             coffee = MENU[user_choice]["ingredients"]
@@ -133,7 +136,6 @@ def main():
 
         # Refund money.
         #! This is working.
-
         def refund(change):
             """Refund any over payment"""
             change = user_money(quarter, dime, nickle, penny) - \
@@ -160,7 +162,6 @@ def main():
 
         # Machines money.
         #! This is working.
-
         def machine_money(machine_bank):
             """Returns the amount of money the machine has collected"""
             machine_bank = user_money(quarter, dime, nickle, penny)
