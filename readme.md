@@ -63,3 +63,9 @@
 - **[Higher Lower](/HigherLower/)**
   - Date: October 24, 2021
   - Description: Guess which entity or person has more followers.
+
+---
+
+- **[Coffee Machine](/CoffeeMachine/)**
+  - Date: October 27, 2021
+  - Description: Simulate a coffee machine. Take orders and dispense coffee.
