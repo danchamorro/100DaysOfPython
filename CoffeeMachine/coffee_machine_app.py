@@ -63,19 +63,18 @@ user_choice = input(
 if user_choice == "report":
     pass
 
+print("Please insert coins.")
+
 # Turn off the Coffee Machine by entering “off” to the prompt.
 if user_choice == "off":
     pass
 
+
 # Print report.
-
-
 def report():
     """Generate report of remaining resources"""
     for k, v in resources.items():
         print("{}: {}ml".format(k.title(), v))
-
-# Check transaction successful?
 
 
 # Ask how many of each coin.
@@ -100,10 +99,8 @@ def user_money(quarter=0, dime=0, nickle=0, penny=0):
     return round(user_coins, 2)
 
 
-print(report())
-
-
 # Check resources.
+#! This is working.
 def check_resources(user_choice):
     """Check if machine has enough resources for coffee"""
     user_choice = MENU[user_choice]["ingredients"]
@@ -118,6 +115,7 @@ def check_resources(user_choice):
 
 
 # Make Coffee.
+#! This is working.
 def make_coffee(user_choice):
     """Make the coffee"""
     coffee = MENU[user_choice]["ingredients"]
@@ -135,7 +133,9 @@ def make_coffee(user_choice):
 
 
 # Refund money.
+#! This is working.
 def refund(change):
+    """Refund any over payment"""
     change = user_money(quarter, dime, nickle, penny) - \
         MENU[user_choice]["cost"]
     return round(change, 2)
@@ -157,10 +157,7 @@ elif user_choice == "espresso" and user_money(quarter, dime, nickle, penny) >= M
     if user_money(quarter, dime, nickle, penny) > MENU[user_choice]["cost"]:
         print("You have a refund of: ${}".format(refund(user_money)))
 else:
-    print("Not enough money")
-
-print("After coffee made. ")
-print(report())
+    print("Sorry that's not enough money. Money refunded.")
 
 
 # Machines money.
@@ -169,44 +166,3 @@ def machine_money(machine_bank):
     """Returns the amount of money the machine has collected"""
     machine_bank = user_money(quarter, dime, nickle, penny)
     return round(machine_bank, 2)
-
-
-print("From User Money: ", user_money(quarter, dime, nickle, penny))
-
-
-print("From Machine money: ", machine_money(user_money))
-
-
-# Compare if user coins can make a purchase
-def check_cost(user_choice, resources):
-    resources = check_resources(False)
-    if resources == True:
-        if user_choice == "latte":
-            if user_money() >= MENU["latte"]["cost"]:
-                print("Here is your latte")
-
-
-# def check_cost(user_choice):
-#     coffee = MENU["latte"]["ingredients"]
-#     if user_choice == "latte":
-#         if user_money() >= MENU["latte"]["cost"]:
-#             print("Here is your latte")
-#             if user_money() > MENU["latte"]["cost"]:
-#                 change = user_money() - MENU["latte"]["cost"]
-#                 print("Here is ${} in change.".format(change))
-#     elif user_choice == "espresso":
-#         if user_money() >= MENU["espresso"]["cost"]:
-#             print("Here is your espresso")
-#             if user_money() > MENU["espresso"]["cost"]:
-#                 change = user_money() - MENU["espresso"]["cost"]
-#                 print("Here is ${} in change.".format(change))
-#     elif user_choice == "cappuccino":
-#         if user_money() >= MENU["cappuccino"]["cost"]:
-#             print("Here is your cappuccino")
-#             if user_money() > MENU["cappuccino"]["cost"]:
-#                 change = user_money() - MENU["cappuccino"]["cost"]
-#                 print("Here is ${} in change.".format(change))
-
-#     resources["water"] = resources["water"] - coffee["water"]
-#     resources["milk"] = resources["milk"] - coffee["milk"]
-#     resources["coffee"] = resources["coffee"] - coffee["coffee"]
