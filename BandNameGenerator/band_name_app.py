@@ -5,9 +5,24 @@
 # 5. Make sure the input cursor shows on a new line, see the example at:
 
 
-print("Welcome to the Band Name Generator")
+# print("Welcome to the Band Name Generator")
 
-city = input("What's the name of the city you gre up in? \n")
-pet = input("What's your pets name? \n")
+# city = input("What's the name of the city you gre up in? \n")
+# pet = input("What's your pets name? \n")
 
-print(f"Your band name could be {city} {pet} ")
+# print(f"Your band name could be {city} {pet} ")
+
+def band_name_generator():
+    cont = True
+    while cont:
+        city = input("What's the name of the city you grew up in? \n")
+        pet = input("What's your pets name? \n")
+        print(f"Your band name could be {city} {pet} ")
+        cont = input("Would you like to generate another band name? (y/n) \n")
+        if cont == "y":
+            cont = True
+        else:
+            cont = False
+
+
+band_name_generator()
