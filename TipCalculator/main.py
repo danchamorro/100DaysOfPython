@@ -5,15 +5,27 @@
 # HINT 1: https://www.google.com/search?q=how+to+round+number+to+2+decimal+places+python&oq=how+to+round+number+to+2+decimal
 # HINT 2: https://www.kite.com/python/answers/how-to-limit-a-float-to-two-decimal-places-in-python
 
-print("Welcome to the tip calculator.")
-bill = input("What was the total bill? $")
-percent = input("What percentage tip would you like to give? ")
-people = input("How many people to split the bill? ")
+# print("Welcome to the tip calculator.")
+# bill = input("What was the total bill? $")
+# percent = input("What percentage tip would you like to give? ")
+# people = input("How many people to split the bill? ")
 
-fbill = float(bill)
-fpercent = float(percent) / 100
-ipeople = int(people)
+# fbill = float(bill)
+# fpercent = float(percent) / 100
+# ipeople = int(people)
 
-total = (fbill * fpercent + fbill) / ipeople
+# total = (fbill * fpercent + fbill) / ipeople
 
-print("$"+"{:.2f}".format(total))
+# print("$"+"{:.2f}".format(total))
+
+# create a function that takes in a bill amount, a tip percentage, and the number of people from the user input and returns the total amount of the bill including the tip.
+def bill_calc():
+    fbill = float(input("What was the total bill? $"))
+    fpercent = float(
+        input("What percentage tip would you like to give? ")) / 100
+    ipeople = int(input("How many people to split the bill? "))
+    total = (fbill * fpercent + fbill) / ipeople
+    print("Each person will pay: $"+"{:.2f}".format(total))
+
+
+bill_calc()
