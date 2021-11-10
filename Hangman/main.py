@@ -15,7 +15,7 @@ def hangman():
 
     display = []
 
-    for letter in chosen_word:
+    for _ in chosen_word:
         display.append("_")
 
     print(display)
