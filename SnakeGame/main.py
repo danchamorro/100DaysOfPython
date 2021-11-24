@@ -15,6 +15,13 @@ screen.tracer(0)
 # Create a snake from the snake class
 snake = Snake()
 
+# Listener
+screen.listen()
+screen.onkey(snake.go_left, "Left")
+screen.onkey(snake.go_right, "Right")
+screen.onkey(snake.go_up, "Up")
+screen.onkey(snake.go_down, "Down")
+
 
 # Move the snake squares to the right until hits the right wall
 game_on = True
