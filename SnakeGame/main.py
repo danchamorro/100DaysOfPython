@@ -8,8 +8,16 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
 
-# Create the snake body consting of three squares 20X20 and color is white
-snake = Turtle()    # Create a turtle
+
+# Create three snake squares and color is white
+snake_squares = []
+for i in range(3):
+    new_square = Turtle()
+    new_square.shape("square")
+    new_square.color("white")
+    new_square.penup()
+    new_square.goto(i * -20, 0)
+    snake_squares.append(new_square)
 
 
 # Exit on click
